@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "capitalize-sentence": "^0.1.5",
+    "debug": "^4.1.1",
+    "esm": "^3.2.25",
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0",
+    "puppeteer": "^3.2.0"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
