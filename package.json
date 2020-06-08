@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.10.1",
     "capitalize-sentence": "^0.1.5",
     "debug": "^4.1.1",
     "esm": "^3.2.25",

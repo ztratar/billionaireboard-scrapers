@@ -1,10 +1,20 @@
 /*
  * This template exists for you to create a scaffold for the scraper.
- * Please test both your recent and "all" scrapers.
  *
- * TO RUN: DEBUG=* node -r esm scrapers/<your-scraper>.js
+ * Billionaires have foundations, and many foundations or billionaires directly
+ * have websites that can be scraped. We want to gather their contribution data
+ * and map it to the standard format.
  *
- * This will enable logging to print, and import/export ES6 use.
+ * - Use the scaffold below to get started.
+ * - Export global functions as they are named below. These will be
+ *   called by the generic infrastructure, and then populate billionareboard.
+ * - Please test both your recent and "all" scrapers. You can do this with jest.
+ * - For a functioning example, refer to scrapers/gates-foundation.js
+ * - More info: https://www.notion.so/ztratar/Billionaire-Scraping-0f1e6cfe7401422b845016e02e64c4b4
+ *
+ * TO RUN:
+ * - yarn
+ * - DEBUG=* node -r esm scrapers/<your-scraper>.js
  */
 
 import fetch from "node-fetch";

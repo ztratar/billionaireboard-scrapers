@@ -1,7 +1,7 @@
 /*
- * TO RUN: DEBUG=* node -r esm scrapers/gates-foundation.js
- *
- * This will enable logging to print, and import/export ES6 use.
+ * TO RUN:
+ * - yarn
+ * - DEBUG=* node -r esm scrapers/gates-foundation.js
  */
 
 import fetch from "node-fetch";
@@ -88,7 +88,8 @@ export const getAllData = async () => {
   for (let pageNumber = 1; pageNumber <= 1814; pageNumber++) {
     allRawData = allRawData.concat(await getDataFromApiPage(pageNumber));
   }
-  const finalData = allRawData.map(d => normalizeContribution(d));
+  const finalData = await Promise.all(_.map(allRawData, normalizeContribution));
+
   return finalData;
 };
 
@@ -101,16 +102,17 @@ export const getAllData = async () => {
  * pull the last 20-30 records from the foundation's website. Since we'll run it
  * every day, we shouldn't miss anything.
  */
-export const getRecentData = async () => {
+export const getRecentData = async (maxPages = 5) => {
   log('Getting recent data...');
 
   let allRawData = [];
 
   // Get the first 5 pages
-  for (let pageNumber = 1; pageNumber <= 5; pageNumber++) {
+  for (let pageNumber = 1; pageNumber <= maxPages; pageNumber++) {
     allRawData = allRawData.concat(await getDataFromApiPage(pageNumber));
   }
-  const finalData = allRawData.map(d => normalizeContribution(d));
+  const finalData = await Promise.all(_.map(allRawData, normalizeContribution));
+
   return finalData;
 };
 
